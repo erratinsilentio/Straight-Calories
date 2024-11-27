@@ -1,16 +1,36 @@
 ---
 import '@/styles/globals.css'
+import {CardComponent} from '@/components/Card.tsx'
+import {Input} from '@/components/ui/input'
+
+const macros = ["Calories", "Fat", "Carbs", "Protein"]
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content="{Astro.generator}" />
+    <title>Astro</title>
+  </head>
+  <body class="flex flex-col justify-center items-center p-8">
+    <header class="w-full flex justify-center">
+      <h1
+        class="text-[50px] font-bold bg-gradient-to-r from-ui-indigo to-ui-yellow bg-clip-text text-transparent"
+      >
+        Daily Calories
+      </h1>
+    </header>
+    <section class="w-full grid grid-cols-2 justify-items-center">
+      {macros.map((macro) => (
+        <CardComponent
+          title={macro}
+          description="Added with your meal"
+          >
+          <Input type="number" placeholder="Calories Burned" />
+        </CardComponent>
+      ))}
+    </section>
+  </body>
 </html>
